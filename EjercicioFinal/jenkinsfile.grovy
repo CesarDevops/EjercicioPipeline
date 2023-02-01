@@ -7,8 +7,8 @@ pipeline {
         stage('Build') { 
             steps { 
                 //sh 'maven task'
-                git branch: 'main', url: 'https://github.com/CesarDevops/Pipelinemicros.git'
-                sh 'maven init'
+                git branch: 'main', url: 'https://github.com/CesarDevops/EjercicioPipeline.git'
+                //sh 'maven init'
                 //sh 'maven wrapper'
                 //sh './maven build'
                 echo 'build succesfull' 
