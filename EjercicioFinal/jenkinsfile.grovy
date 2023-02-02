@@ -16,7 +16,8 @@ pipeline {
                 git 'https://github.com/CesarDevops/EjercicioPipeline.git'
                 
             }
-        */}   
+        } 
+        */ 
 
         stage('Build') { 
             steps { 
@@ -37,7 +38,8 @@ pipeline {
                 //echo 'executing sonar'
                 //bat  'mvn sonar:sonar -Dsonar.host.url='+env.SONAR_URL+' -Dsonar.projectName=QA:%JOB_BASE_NAME% -Dsonar.projectKey=QA:%JOB_BASE_NAME%'
             }
-        */}
+        }
+        */
         stage('Buid docker images') {
             steps {
                 //sh 'make publish'
