@@ -1,5 +1,5 @@
 pipeline { 
-    agent (label "docker-build-mavenEj") 
+    agent (label "docker-build-Jenkins") 
     tools {
         maven "3.8.7"
     } 
