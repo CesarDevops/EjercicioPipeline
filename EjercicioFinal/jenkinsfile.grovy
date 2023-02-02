@@ -3,7 +3,20 @@ pipeline {
     tools {
         maven "3.8.7"
     }
+    environment{
+
+        DOCKERHUB_CREDENTIALS = credentials('cesarnttdata_dockerhub')
+    }
     stages{  
+
+        stage('SCM checkout') {
+            steps {
+               
+                git https://github.com/CesarDevops/EjercicioPipeline.git
+                
+            }
+        }   
+
         stage('Build') { 
             steps { 
                 //sh 'maven task'
@@ -25,11 +38,35 @@ pipeline {
                 //bat  'mvn sonar:sonar -Dsonar.host.url='+env.SONAR_URL+' -Dsonar.projectName=QA:%JOB_BASE_NAME% -Dsonar.projectKey=QA:%JOB_BASE_NAME%'
             }
         }
-        stage('Deploy') {
+        stage('Buid docker images') {
             steps {
                 //sh 'make publish'
-                echo 'Deploy succesfull'  
+                sh 'docker build-t cesarnttdata/mavenEj:$BUID_NUMBER.'
+                echo 'Build docker images'  
+                
             }
+        }
+        stage('login to docker hub') {
+            steps {
+
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                //withCredentials([usernamePassword(credentialsId: 'docker_hub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]){
+                   // sh 'docker push 8-jre-alpine:latest'
+                //}
+                echo 'Login docker hub'  
+                
+            }
+            stage('Push images') {
+            steps {
+
+                sh 'docker push cesarnttdata/mavenEj:$BUILD_NUMBER'
+                //withCredentials([usernamePassword(credentialsId: 'docker_hub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]){
+                   // sh 'docker push 8-jre-alpine:latest'
+                //}
+                echo 'Push docker images'  
+                
+            }
+        }
         }
     }
 }
