@@ -10,13 +10,13 @@ pipeline {
     }
     stages{  
 
-        stage('SCM checkout') {
+        /*stage('SCM checkout') {
             steps {
                
                 git 'https://github.com/CesarDevops/EjercicioPipeline.git'
                 
             }
-        }   
+        */}   
 
         stage('Build') { 
             steps { 
@@ -26,19 +26,18 @@ pipeline {
                 //sh 'maven wrapper'
                 //sh './maven build'
                 echo 'build succesfull' 
-                //git 'https://github.com/CesarDevops/EjercicioPipeline.git'
                 //sh "mvn -Dmaven.test.failure.ignore=true clean package"
                 //bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
         }
-        stage('Test'){
+        /*stage('Test'){
             steps {
                 //sh 'make check'
                 echo 'test succesfull' 
                 //echo 'executing sonar'
                 //bat  'mvn sonar:sonar -Dsonar.host.url='+env.SONAR_URL+' -Dsonar.projectName=QA:%JOB_BASE_NAME% -Dsonar.projectKey=QA:%JOB_BASE_NAME%'
             }
-        }
+        */}
         stage('Buid docker images') {
             steps {
                 //sh 'make publish'
