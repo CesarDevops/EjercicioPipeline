@@ -2,8 +2,12 @@ pipeline {
     agent any 
     tools {
         maven "3.8.7"
-    }
+    } 
+    
     environment{
+
+        withCredentials([usernamePassword(credentialsId: 'docker_registry_password', // bad name: it's not a password but username+password
+        passwordVariable: 'DOCKERHUB_CREDENTIALS_PSW', usernameVariable: 'DOCKERHUB_CREDENTIALS_USR')])
 
         DOCKERHUB_CREDENTIALS = credentials('cesarnttdata_dockerhub')
     }
