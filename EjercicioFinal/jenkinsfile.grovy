@@ -43,7 +43,7 @@ pipeline {
         stage('Buid docker images') {
             steps {
                 //sh 'make publish'
-                sh 'docker build-t cesarnttdata/mavenEj:$BUIDL_NUMBER.'
+                sh 'docker build-t cesarnttdata/img_micros.3:$BUIDL_NUMBER.'
                 echo 'Build docker images'  
                 
             }
@@ -64,7 +64,7 @@ pipeline {
         stage('Push images') {
             steps {
 
-                sh 'docker push cesarnttdata/mavenEj:$BUILD_NUMBER'
+                sh 'docker push cesarnttdata/img_micros.3:$BUILD_NUMBER'
                 //withCredentials([usernamePassword(credentialsId: 'docker_hub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]){
                    // sh 'docker push 8-jre-alpine:latest'
                 //}
