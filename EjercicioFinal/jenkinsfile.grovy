@@ -46,14 +46,14 @@ pipeline {
                 
             }
         }
-        stage('login to docker hub') {
+        stage('login to dockerhub') {
             steps {
 
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                 //withCredentials([usernamePassword(credentialsId: 'docker_hub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]){
                    // sh 'docker push 8-jre-alpine:latest'
                 //}
-                echo 'Login docker hub'  
+                echo 'Login dockerhub'  
                 
             }
             stage('Push images') {
