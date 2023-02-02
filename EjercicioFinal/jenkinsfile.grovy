@@ -6,9 +6,6 @@ pipeline {
     
     environment{
 
-        withCredentials([usernamePassword(credentialsId: 'docker_registry_password', // bad name: it's not a password but username+password
-        passwordVariable: 'DOCKERHUB_CREDENTIALS_PSW', usernameVariable: 'DOCKERHUB_CREDENTIALS_USR')])
-
         DOCKERHUB_CREDENTIALS = credentials('cesarnttdata_dockerhub')
     }
     stages{  
@@ -45,7 +42,7 @@ pipeline {
         stage('Buid docker images') {
             steps {
                 //sh 'make publish'
-                sh 'docker build-t cesarnttdata/mavenEj:$BUID_NUMBER.'
+                sh 'docker build-t cesarnttdata/mavenEj:$BUIDL_NUMBER.'
                 echo 'Build docker images'  
                 
             }
@@ -53,10 +50,12 @@ pipeline {
         stage('login to dockerhub') {
             steps {
 
+                
+                withCredentials([usernamePassword(credentialsId: 'cesarnttdata_dockerhub', passwordVariable: 'DOCKERHUB_CREDENTIALS_PSW', usernameVariable: 'DOCKERHUB_CREDENTIALS_USR')]){
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                //withCredentials([usernamePassword(credentialsId: 'docker_hub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]){
-                   // sh 'docker push 8-jre-alpine:latest'
-                //}
+                
+                // sh 'docker push 8-jre-alpine:latest'
+                }
                 echo 'Login dockerhub'  
                 
             }
