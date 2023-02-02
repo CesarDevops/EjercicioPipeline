@@ -56,7 +56,8 @@ pipeline {
                 echo 'Login dockerhub'  
                 
             }
-            stage('Push images') {
+        }
+        stage('Push images') {
             steps {
 
                 sh 'docker push cesarnttdata/mavenEj:$BUILD_NUMBER'
@@ -67,6 +68,6 @@ pipeline {
                 
             }
         }
-        }
+        
     }
 }
