@@ -1,5 +1,5 @@
 pipeline { 
-    agent {label "docker-build-Jenkins"} 
+    agent any //{label "docker-build-Jenkins"} 
     tools {
         maven "3.8.7"
     } 
@@ -77,10 +77,10 @@ pipeline {
         
     }
 
-    post {
+}
+post {
 
         always {
                 sh 'docker logout'
         }
-    }
 }
