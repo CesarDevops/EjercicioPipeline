@@ -46,7 +46,7 @@ pipeline {
                 //sh 'make publish'
                 //sh 'docker build -t cesarnttdata/img_micros.3.:$BUIDL_NUMBER.'
                 sh 'docker build -t ${Usuarios}:${Usuario.v1} .'
-                echo 'Build docker images'  
+                //echo 'Build docker images'  
                 
             }
         }
