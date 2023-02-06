@@ -11,14 +11,14 @@ pipeline {
     }
     stages{  
 
-        stage('SCM checkout') {
+        /*stage('SCM checkout') {
             steps {
                
                 git 'https://github.com/CesarDevops/EjercicioPipeline.git'
                 
             }
         } 
-        
+        */
 
         stage('Build') { 
             steps { 
