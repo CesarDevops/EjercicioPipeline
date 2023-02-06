@@ -41,7 +41,7 @@ pipeline {
             }
         }
         */
-        stage('Buid docker images') {
+        stage('Build docker images') {
             steps {
                 //sh 'make publish'
                 sh 'docker build-t cesarnttdata/img_micros.3:$BUIDL_NUMBER.'
