@@ -44,12 +44,12 @@ pipeline {
         stage('Build docker images') {
             steps {
                 //sh 'make publish'
-                sh 'docker build-t cesarnttdata/img_micros.3:$BUIDL_NUMBER.'
+                sh 'docker build -t cesarnttdata/img_micros.3:$BUIDL_NUMBER.'
                 echo 'Build docker images'  
                 
             }
         }
-        stage('login to dockerhub') {
+         /*stage('login to dockerhub') {
             steps {
 
                 
@@ -84,4 +84,5 @@ post {
         always {
                 sh 'docker logout'
         }
+        */
 }
