@@ -44,8 +44,8 @@ pipeline {
         stage('Build docker images') {
             steps {
                 //sh 'make publish'
-                sh 'docker build -t cesarnttdata/usuariosweb.:v1 .'
-                //sh 'docker build -t ${cesarnttdata}:${Usuario.v1} .'
+                //sh 'docker build -t cesarnttdata/usuariosweb:v1 .'
+                sh 'docker build -t ${cesarnttdata}:${Usuario.v1} .'
                 //echo 'Build docker images'  
                 
             }
